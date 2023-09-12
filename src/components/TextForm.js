@@ -41,7 +41,7 @@ export default function TextForm(props) {
         style={{ color: props.mode === "dark" ? "white" : "#042743" }}
       >
         <div>
-          <h1>{props.heading}</h1>
+          <h1 className="mb-4"> {props.heading}</h1>
           <div className="mb-3">
             <textarea
               className="form-control"
@@ -50,7 +50,7 @@ export default function TextForm(props) {
               id="myBox"
               rows="8"
               style={{
-                backgroundColor: props.mode === "dark" ? "grey" : "white",
+                backgroundColor: props.mode === "dark" ? "#13466e" : "white",
                 color: props.mode === "dark" ? "white" : "#042743",
               }}
             ></textarea>
@@ -59,7 +59,8 @@ export default function TextForm(props) {
           {/* Button 1 */}
           <button
             // className={`btn btn-${props.btnColor} mx-3`}
-            className={`btn btn-primary mx-3`}
+            disabled = {text.length === 0}
+            className={`btn btn-primary mx-3 my-1`}
             onClick={handleUppercaseClick}
           >
             Convert to Uppercase
@@ -68,7 +69,8 @@ export default function TextForm(props) {
           {/* Button 2 */}
           <button
             // className={`btn btn-${props.btnColor} mx-3`}
-            className={`btn btn-primary mx-3`}
+            disabled = {text.length === 0}
+            className={`btn btn-primary mx-2 my-1`}
             onClick={handleLowercaseClick}
           >
             Convert to Lowercase
@@ -76,8 +78,9 @@ export default function TextForm(props) {
 
           {/* Button 3 */}
           <button
-            // className={`btn btn-${props.btnColor} mx-3`}
-            className={`btn btn-primary mx-3`}
+            //className={`btn btn-${props.btnColor} mx-3`}
+            disabled = {text.length === 0}
+            className={`btn btn-primary mx-2 my-1`}
             onClick={handleClearClick}
           >
             Clear All
@@ -94,10 +97,10 @@ export default function TextForm(props) {
         style={{ color: props.mode === "dark" ? "white" : "#042743" }}
       >
         <p>
-          {(text.split(" ").length > 1 ? text.split(" ").length : 0)}
+          {text.split(" ").filter((element)=>{return element.length!==0}).length}
           words and {text.length} characters
         </p>
-        <p>{0.008 * text.split(" ").length} Minutes to read this text</p>
+        <p>{0.008 * text.split(" ").filter((element)=>{return element.length!==0}).length} Minutes to read this text</p>
 
         <h2>Preview</h2>
         <p>{text.length > 0 ? text : "Enter text to preview"}</p>
