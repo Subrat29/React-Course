@@ -32,7 +32,7 @@ export default function Navbar(props) {
             <li className="nav-item">
               {/* Use Link inplace of a && to inplace of href */}
 
-              <Link className="nav-link active" aria-current="page" to="/">
+              <Link className="nav-link" aria-current="page" to="/">
                 Home
               </Link>
             </li>
